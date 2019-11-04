@@ -37,3 +37,26 @@
 
 6. **Problemas físicos ou catástofres**
 	* Falta de energia elétrica, prédio pega fogo e etc.
+
+### Estados da Transação
+* Gerenciador de recuperação precisa acompanhar o início, término, e se a transação foi confirmada ou abortada.
+* **Operações**
+	* **_Begin_transaction_** :arrow_right: Marca o início da transação [Entra no estado ativo];
+	* **_Read/Write_**;
+	* **_End_Transaction_** :arrow_right: Terminou as operações de leitura/escrita [Operação entra no estado de parcialmente confirmada];
+	* **_Commit/Abort_** :arrow_right: Termina efetivamente a transação [Entra no estado de efetivada (_commit_) ou de falha (_abort_) e em seguida entra no estado de encerrada].
+* Tudo fica no _log_, pois caso tenha um erro, o SGBD vai no _log_ e desfaz as transações (_rollback_).
+
+[Imagem]
+
+### _Log_ do sistema
+* Registra todas as operações de transações que afetam valores do banco.
+* Cada transação tem um **ID único**.
+* Após ter sido abortada pelo SGBD, uma transação volta com o mesmo ID? **Depende**.
+* Importante para desfazer ou refazer uma transação.
+* Armazenado primeiramente em MP e depois vai para o disco.
+	* Gravãção realizada apenas quando o o bloco físico do registro de _log_ estiver preenchido.
+	* **Gravação forçada** :arrow_right: de tempos em tempos é feita a gravação do bloco de registros do _log_ mesmo que não esteja preenchido, para que, em caso de erro, o SGBD saiba quais transações foram finalizadas.
+* *Control Files*: armazenam todos os dados referentes a gerência do banco.
+
+_OBS: uma insância de um SGBD é a área de memória destinada ao banco, os processos e os arquivos. Em uma mesma máquina pode-se ter mais de uma instância._
