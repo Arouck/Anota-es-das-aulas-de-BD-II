@@ -118,3 +118,51 @@ _OBS: 1 e 2 os mais importantes (3 é trivial)._
 ### Características de um escalonamento recuperável
 
 * Nenhuma transação é confirmada, até que todas as transações anteriores a ela (no escalonamento) forem confirmadas, ou seja, só confirma T2 depois que confirmar T1 [se não, vai de encontro ao C (Consistência dos dados) do ACID].
+
+### Escalonamento sem cascata
+
+> Transações só leêm itens que já tenham sido _commitados_.
+
+> Evita _rollback_ em cascata.
+
+### Escalonamento estrito
+
+> Transções não podem ler nem gravar atributos que não tenham sido _commitados_ pela última transação que o gravou.
+
+> Caso não respeite a regra, restaurar a _before image_.
+ 
+### Escalonamento serial
+
+> Operações de cada transação são executadas em série.
+
+* Características
+ 1. Somente uma transação de cada vez é ativa;
+ 2. _Commit_ ou _abort_ de uma transação inicia a seguinte;
+ 3. Todo escalonamento serial é considerado correto;
+ 
+### Escalonamento não-serial
+
+> Operações executadas de maneira entrelaçada.
+
+### Escalonamento seriável
+
+> Operações podem estar sendo executadas entrelaçadas mas não com o mesmo atributo. Assim, reproduz o mesmo rezutado do escalonamento serial.
+
+### Escalonamentos equivalentes
+
+* **Escalonamentos equivalentes em resultado**
+ 
+ > Escalonamentos diferentes que reproduzem o mesmo resultado de saída.
+
+ **_OBS: Tomar cuidado pois nem todos os valores podem dar a mesma saída, assim os escalonamentos não são equivalentes!_**
+
+* **Equivalentes em Conflito**
+ 
+ > Ordem de duas operações conflitantes quaisquer é a mesma em ambos escalonamentos.
+
+* **Algoritmo para testar a seriabilidade de conflito**
+ 1. Para cada transação crie um nó Ti;
+ 2. Para cada caso onde Tj executar um read_item(X) depois que Ti executar um write_item(X), crie um arco (Ti :arrow_right: Ti).
+ 3. Para cada caso onde Tj executar um write_item(X) depois que Ti executar um read_item(X), crie um arco (Ti :arrow_right: Ti).
+ 4. Para cada caso onde Tj executar um write_item(X) depois que Ti executar um write_item(X), crie um arco (Ti :arrow_right: Ti).
+ *  O escalonamento S é seriável se e somente se o gráfico NÃO TIVER nenhum ciclo.
