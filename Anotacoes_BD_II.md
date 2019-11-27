@@ -109,7 +109,7 @@ __*OBS: Só existe concorrência quando duas ou mais transações querem acessar
 	
 ### Escalonamento Completo
 
-1. Contempla as oprações descritas em cada transação e termina com _commit_ **ou** _abort_.
+1. Contempla as operações descritas em cada transação e termina com _commit_ **ou** _abort_.
 2. **Não** altera a ordem das operações de nenhuma transação.
 3. Para quaisquer par de operações conflitantes, umas ocorre antes da outra.
 
@@ -146,15 +146,13 @@ _OBS: 1 e 2 os mais importantes (3 é trivial)._
 
 ### Escalonamento seriável
 
-> Operações podem estar sendo executadas entrelaçadas mas não com o mesmo atributo. Assim, reproduz o mesmo rezutado do escalonamento serial.
+> Operações podem estar sendo executadas entrelaçadas mas não com o mesmo atributo. Assim, reproduz o mesmo resultado do escalonamento serial.
 
 ### Escalonamentos equivalentes
 
 * **Escalonamentos equivalentes em resultado**
  
  > Escalonamentos diferentes que reproduzem o mesmo resultado de saída.
-
- **_OBS: Tomar cuidado pois nem todos os valores podem dar a mesma saída, assim os escalonamentos não são equivalentes!_**
 
 * **Equivalentes em Conflito**
  
