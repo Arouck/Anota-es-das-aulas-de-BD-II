@@ -52,6 +52,22 @@
 
 ## _Deadlock_
 ---
+* **Controle de _Deadlock_**
+    * **Prevenção de _deadlock_**
+        * Evita _deadlocks_ antes qeu ocorram.
+        * Preferível se a probabilidade de _deadlocks_ for muito alta.
+    * **Detecção e recuperação de _deadlock_**
+        * Não evita o _deadlock_, mas o detecta e impede o bloqueio indefinido das transações envolvidas.
+        * Mais eficiente se ocorrem poucos _deadlocks_.
+    * **Rollback pode ser necessário independente da abordagem utilizada.**
+* **Prevenção de _Deadlocks_**
+    1. **Bloqueio de duas fases conservador**
+    2. **Ordenar os itens**
+        * Transação bloqueia os itens de acordo com a ordem de necessidade.
+    3. **Registro de _Timestamp_ da transação**
+        * _Timestamp_ Ts(T) -> identificador único atribuído a cada transação.
+        * Ordem em que a transação é iniciada.
+            * Ex: T1 inicia antes de T2 -> Ts(T1) < Ts(T2)
 
 ## _Starvation_
 ---
