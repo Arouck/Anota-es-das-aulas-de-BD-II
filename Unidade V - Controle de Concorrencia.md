@@ -1,8 +1,8 @@
 # Unidade V
-============
+---
 
 ## Técnicas de Bloqueio
-------------------------
+---
 > A transação só acessa um item depois de efetuar o bloqueio.
 
 * Bloqueio binário
@@ -26,30 +26,18 @@
             - **_Exclusive-locked_**
 
 ## Conversão de bloqueios
---------------------------
+---
 * _**Upgrade**_
     - _Read\_lock(X)_ :arrow_right: Mudar bloqueio para _Write\_lock(X)_.
 * _**Downgrade**_
     - _Write\_lock(X)_ :arrow_right: Mudar bloqueio para _Read\_lock(X)_.
 
 ## Bloqueios em duas fases
----------------------------
+---
 * **1ª Fase** :arrow_right: Expansão ou Crescimento
     * Pode-se obter bloqueio de novos itens, mas nenhum pode ser liberado.
 * **2ª Fase** :arrow_right: Encolhimento ou Retrocesso
     * Bloqueios existentes podem ser liberados mas nenhum bloqueio pode ser obtido.
-
-* **Upgrade**:
-
-    > _read\_lock(X)_ -> _write\_lock_
-
-    * Só pode ser feito na fase de crescimento.
-
-* **Downgrade**:
-
-    > _write\_lock(X)_ -> _read\_lock_
-
-    * Só pode ser feito na fase de encolhimento
 
 * **Tipos**
     * **Conservador**
@@ -63,13 +51,13 @@
         - Podem causar **_deadlock_** e/ou **_starvation_**
 
 ## _Deadlock_
---------------
+---
 
 ## _Starvation_
-----------------
+---
 
 ## Protocolos com base em _Timestamp_
---------------------------------------
+---
 
 ## Protocolos multiversão
---------------------------
+---
